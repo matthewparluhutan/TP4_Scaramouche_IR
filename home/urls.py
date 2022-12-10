@@ -6,5 +6,5 @@ app_name = 'home'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    # path('search/<str:docid>', views.)
+    path('clicked/<str:ids>', views.clicked, name='clicked')
 ]
