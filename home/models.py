@@ -51,5 +51,4 @@ def eval_lambdamart(k=10, query = "six"):
         pred_score = rankModel.predict(X_unseen)
         scores = [x for x in zip([did for did in docs], pred_score)]
         sorted_did_scores = sorted(scores, key=lambda tup: tup[1], reverse=True)
-        print([doc for doc,_ in sorted_did_scores])
         return [doc for doc,_ in sorted_did_scores]

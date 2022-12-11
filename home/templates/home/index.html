@@ -74,6 +74,7 @@
             <h3 class="text-center" id="changingText3">Il n y a pas des resultats, entschuldigung</h3>
         </div>
         {% else %}
+            <p>Done in {{ time }} seconds</p>
             {% for id, text in textes.items %}
             <div class="card w-75 border-dark m-3">
                 <h3 class="card-header bg-main1 text-center text-left-lg bg-dark">

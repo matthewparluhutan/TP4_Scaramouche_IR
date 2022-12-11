@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import eval_lambdamart
+from datetime import datetime
 import os
 import sys
 # Create your views here.
@@ -15,7 +16,11 @@ def index(request):
         return render(request, 'home/index.html', context)
     else:
         sys.path.append(os.path.join(os.path.dirname(__file__)))
+        start_time = datetime.now()
         resultat = eval_lambdamart(100, query)
+        end_time = datetime.now()
+        timenya = str(end_time - start_time).split(":")[-1]
+
         if resultat is None:
             context = {
                 'query': query,
@@ -29,12 +34,12 @@ def index(request):
                 text = open(text_dir).read()
                 coll_ids = int((doc).split("/")[0])
                 ids = int((doc).split("/")[1].split(".")[0])
-                print(coll_ids)
                 resultat_text[str(doc)] = [text, coll_ids, ids]
             context = {
                 'query': query,
                 'textes': resultat_text,
-                'loaded': 2
+                'loaded': 2,
+                'time': timenya,
             }
             return render(request, 'home/index.html', context)
 
