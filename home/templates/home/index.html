@@ -51,7 +51,7 @@
 <body>
         <header class="d-flex flex-row">
             <a href="{% url 'home:index'%}"><img src = "{% static 'home/scara.png' %}" width="45" alt="" class="d-inline-block align-middle mr-2"></a>
-            <h1>Ask Scaramouche!</h1>
+            <h1 style="color:#c8d0cb;">Ask Scaramouche!</h1>
             
             <form class="d-flex flex-row" id="changingText">
                 <div class="input-group mb-3">
@@ -66,7 +66,7 @@
         {% if loaded == 0 %}
         <div class="h-100 d-flex flex-column align-items-center justify-content-center">
             <img src = "{% static 'home/scara.png' %}">
-            <h1 id="changingText2">Ask Scaramouche!</h1>
+            <h1 id="changingText2" style="color:#b35d57;">Ask Scaramouche!</h1>
         </div>
         {% elif loaded == 1 %}
         <div class="h-100 d-flex flex-column align-items-center justify-content-center">
@@ -77,13 +77,14 @@
             {% for id, text in textes.items %}
             <div class="card w-75 border-dark m-3">
                 <h3 class="card-header bg-main1 text-center text-left-lg bg-dark">
+                    <a href="{% url 'home:clicked' text.1 text.2 %}" style="color:#c8d0cb;">
                     Document {{id}}
                     </a>
                 </h3>
                 <div class="card-body bg-main2" style="background-color: rgba(2, 18, 32, 0.503);">
                     <div class="row">
                         <div class="col-lg-9 col-12 book-info">
-                            <p class="card-text text-justify">{{text}}</p>
+                            <p class="card-text text-justify">{{text.0|truncatechars:100}}</p>
                         </div>
                         <img class="d-inline-block align-middle mr-2" src="{% static 'home/scara.png' %}" width="50" height="60">
                     </div>

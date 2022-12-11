@@ -6,5 +6,5 @@ app_name = 'home'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    # path('clicked/<str:ids>/<str:text>', views.clicked, name='clicked')
+    path('clicked/<int:coll_ids>/<int:ids>', views.clicked, name='clicked')
 ]

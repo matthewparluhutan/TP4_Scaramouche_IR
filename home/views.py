@@ -27,7 +27,10 @@ def index(request):
             for doc in resultat:
                 text_dir = os.path.join(directoire, "collection/") + doc
                 text = open(text_dir).read()
-                resultat_text[str(doc)] = text
+                coll_ids = int((doc).split("/")[0])
+                ids = int((doc).split("/")[1].split(".")[0])
+                print(coll_ids)
+                resultat_text[str(doc)] = [text, coll_ids, ids]
             #     docums.append(text.lower())
             # for i in docums:
             #     with open(i, "r", encoding='utf-8') as filenya:
@@ -60,13 +63,14 @@ def index(request):
         #     }
         #     return render(request, 'home/index.html', context)
 
-def clicked(request, ids):
+def clicked(request, coll_ids, ids):
     directoire = os.path.dirname(__file__)
-    name = ids
-    text_dir = os.path.join(directoire, "collection/") + ids
+    data_ids = f"{str(coll_ids)}/{str(ids)}.txt"
+    text_dir = os.path.join(directoire, "collection/") + data_ids
     returned = open(text_dir).read()
+
     context = {
-        'name': name,
+        'name': f"Document {str(ids)}",
         'returned': returned,
     }
     return render(request, 'home/clicked.html', context)

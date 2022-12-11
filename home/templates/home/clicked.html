@@ -48,16 +48,32 @@
         }
     </style>
 </head>
-<body>
+<body style="height: 600px;">
         <header class="d-flex flex-row">
-            <a href="{}"><img src = "{% static 'home/scara.png' %}" width="45" alt="" class="d-inline-block align-middle mr-2"></a>
+            <a href="{% url 'home:index'%}"><img src = "{% static 'home/scara.png' %}" width="45" alt="" class="d-inline-block align-middle mr-2"></a>
             <h1>Ask Scaramouche!</h1>
         </header>
-        <h2>Ask Scaramouche!</h2>
+        <div class="h-100 d-flex flex-column align-items-center justify-content-center" >
+        <h2 id="asken">Ask Scaramouche!</h2>
         <h1 class="display-4">{{ name }}</h1>
         <p>{{ returned }}</p>
+        </div>
         <footer>
             <p class="text-center">Copyright @ Matthew Tumbur Parluhutan</p>
         </footer>
 </body>
+<script type="text/javascript">
+    var ask = ["Demande a Scaramouche", "σουνγχουν του σκαραμους", "intreaba scaramouche", "Tanya Scaramouche", "Ask Scaramouche", "пꙑтати скарамошу"];
+    const text = document.getElementById("asken");
+    text.onmouseover = function () {
+        var randomIndexb = Math.floor(Math.random() * ask.length);
+        var textb = ask[randomIndexb];
+        text.innerHTML = textb;
+    };
+    text.onmouseout = function () {
+        var randomIndexb = Math.floor(Math.random() * ask.length);
+        var textb = ask[randomIndexb];
+        text.innerHTML = textb;
+    };
+</script>
 </html>
