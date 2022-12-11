@@ -2,10 +2,8 @@ import os
 import pickle
 import contextlib
 import heapq
-from pydoc import doc
 import time
 import math
-from turtle import pos
 import re
 
 from .index import InvertedIndexReader, InvertedIndexWriter
@@ -171,13 +169,17 @@ class BSBIIndex:
         termIDs dan docIDs. Dua variable ini harus 'persist' untuk semua pemanggilan
         parse_block(...).
         """
-        td_doc = set([])
-        for i in next(os.walk(os.path.join(self.data_dir, block_dir_relative)))[2]:
-            with open("./" + (str)(os.path.join(os.path.join(self.data_dir, block_dir_relative), i)), "r") as doc:
-                for j in self.process_corp(doc.read()):
-                    td_doc.add((self.term_id_map[j], self.doc_id_map["./" + (str)(os.path.join(os.path.join(self.data_dir, block_dir_relative), i))]))
-        return td_doc
-        
+        td_doc = set({})
+        files = os.listdir(os.path.join(self.data_dir, block_dir_relative))
+
+        for f in files:
+            text = open(os.path.join(self.data_dir, os.path.join(block_dir_relative, f))).read()
+            text = self.process_corp(text.lower())
+            doc_id = self.doc_id_map.__getitem__(os.path.join(block_dir_relative, f))
+            for w in text:
+                t_id = self.term_id_map.__getitem__(text)
+                td_doc.add((t_id, doc_id))
+        return list(td_doc)
 
 
     def retrieve_tfidf(self, query, k = 10):

@@ -1,0 +1,3 @@
+Kontributor Deployment: Adam Syauqi Medise 1906292881
+
+Keterangan: Menggunakan akun heroku yang sama karena berbayar

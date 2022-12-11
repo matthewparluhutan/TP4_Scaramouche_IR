@@ -77,14 +77,13 @@
             {% for id, text in textes.items %}
             <div class="card w-75 border-dark m-3">
                 <h3 class="card-header bg-main1 text-center text-left-lg bg-dark">
-                    <a href="{% url 'home:clicked' text.1 %}">
                     Document {{id}}
                     </a>
                 </h3>
                 <div class="card-body bg-main2" style="background-color: rgba(2, 18, 32, 0.503);">
                     <div class="row">
                         <div class="col-lg-9 col-12 book-info">
-                            <p class="card-text text-justify">{{text.0|truncatechars:150}}</p>
+                            <p class="card-text text-justify">{{text}}</p>
                         </div>
                         <img class="d-inline-block align-middle mr-2" src="{% static 'home/scara.png' %}" width="50" height="60">
                     </div>

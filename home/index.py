@@ -1,6 +1,5 @@
 import pickle
 import os
-from turtle import pos
 
 class InvertedIndex:
     """
