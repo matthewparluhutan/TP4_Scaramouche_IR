@@ -13,6 +13,8 @@ from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 from tqdm import tqdm
 import nltk as nt
+nt.download('stopwords')
+nt.download('punkt')
 
 class BSBIIndex:
     """
