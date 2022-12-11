@@ -31,37 +31,12 @@ def index(request):
                 ids = int((doc).split("/")[1].split(".")[0])
                 print(coll_ids)
                 resultat_text[str(doc)] = [text, coll_ids, ids]
-            #     docums.append(text.lower())
-            # for i in docums:
-            #     with open(i, "r", encoding='utf-8') as filenya:
-            #         temp = str(i).split('collection\\')[1]
-            #         temp = temp.split("\\")[1]
-            #         resultat_text[str(temp)] = [filenya.read(), i]
             context = {
                 'query': query,
                 'textes': resultat_text,
                 'loaded': 2
             }
             return render(request, 'home/index.html', context)
-        # try:
-        #     resultat_text = {}
-        #     for i in resultat:
-        #         with open(str(i), "r", encoding='utf-8') as filenya:
-        #             temp = str(i).split('collection\\')[1]
-        #             temp = temp.split("\\")[1]
-        #             resultat_text[str(temp)] = [filenya.read(), i]
-        #     context = {
-        #         'query': query,
-        #         'textes': resultat_text,
-        #         'loaded': 2
-        #     }
-        #     return render(request, 'home/index.html', context)
-        # except:
-        #     context = {
-        #         'query': query,
-        #         'loaded': 1
-        #     }
-        #     return render(request, 'home/index.html', context)
 
 def clicked(request, coll_ids, ids):
     directoire = os.path.dirname(__file__)
